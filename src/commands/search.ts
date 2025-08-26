@@ -1,7 +1,9 @@
+import { rgPath } from '@vscode/ripgrep'
 import chalk from 'chalk'
 import { execa } from 'execa'
 import fs from 'fs/promises'
 import ora from 'ora'
+import path from 'path'
 
 export interface SearchOptions {
   copy?: boolean
@@ -24,28 +26,15 @@ export class SearchCommand {
       process.exit(1)
     }
 
-    // Check if ripgrep is available
-    try {
-      await execa('rg', ['--version'])
-    } catch (error) {
-      console.error(chalk.red('Error: ripgrep (rg) is not installed'))
-      console.error(
-        chalk.yellow(
-          'Install with: brew install ripgrep (macOS) or apt install ripgrep (Ubuntu)',
-        ),
-      )
-      process.exit(1)
-    }
-
     try {
       // Perform the search
-      const searchResults = await this.performSearch(pattern, folder)
+      const searchResults = await this.performSearch(pattern, folder, rgPath)
 
       if (searchResults.trim()) {
         console.log(searchResults)
 
         if (options.copy) {
-          await this.packAndCopy(pattern, folder)
+          await this.packAndCopy(pattern, folder, rgPath)
         }
       } else {
         console.log(
@@ -63,12 +52,13 @@ export class SearchCommand {
   private async performSearch(
     pattern: string,
     folder: string,
+    rgPath: string,
   ): Promise<string> {
     try {
       // Use --fixed-strings to treat pattern as literal string, not regex
       // Add --color=always to force colored output even when piped
       // Add --sort=path to ensure consistent ordering
-      const result = await execa('rg', [
+      const result = await execa(rgPath, [
         pattern,
         '--fixed-strings',
         '--vimgrep',
@@ -86,13 +76,17 @@ export class SearchCommand {
     }
   }
 
-  private async packAndCopy(pattern: string, folder: string): Promise<void> {
+  private async packAndCopy(
+    pattern: string,
+    folder: string,
+    rgPath: string,
+  ): Promise<void> {
     const spinner = ora('Packing files...').start()
 
     try {
       // Get list of files that match the pattern (also use fixed-strings)
       // No need for colors in the file list output
-      const filesResult = await execa('rg', [
+      const filesResult = await execa(rgPath, [
         '-l',
         '--fixed-strings',
         pattern,
