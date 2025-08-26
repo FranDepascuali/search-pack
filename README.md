@@ -15,6 +15,7 @@ npx search-pack <pattern> [options]
 # Examples:
 npx search-pack "your pattern"
 npx search-pack "your pattern" --copy
+npx search-pack "your pattern" -f ./packages/api --copy
 ```
 
 ## **Example**
