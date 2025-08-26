@@ -3,7 +3,6 @@ import chalk from 'chalk'
 import { execa } from 'execa'
 import fs from 'fs/promises'
 import ora from 'ora'
-import path from 'path'
 
 export interface SearchOptions {
   copy?: boolean
