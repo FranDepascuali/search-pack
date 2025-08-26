@@ -1,0 +1,28 @@
+{
+  "name": "sample-project",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "lint": "eslint . --ext .ts,.tsx --config .eslintrc.cjs",
+    "build": "npm run lint && tsc --outDir dist",
+    "dev": "tsx src/index.ts --outDir dist --watch",
+    "test": "npm run build; vitest --run"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "5.2.2",
+    "@typescript-eslint/eslint-plugin": "8.26.0",
+    "@typescript-eslint/parser": "8.26.0",
+    "eslint": "8.57.1",
+    "eslint-config-prettier": "10.0.1",
+    "eslint-plugin-import": "^2.28.1",
+    "prettier": "3.2.4",
+    "tsx": "4.7.0",
+    "typescript": "5.8.2",
+    "vite-tsconfig-paths": "5.1.4",
+    "vitest": "3.0.5"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
