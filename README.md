@@ -24,6 +24,7 @@ npx search-pack "your pattern" -f ./packages/api --copy
 
 ```bash
 $ npx search-pack "performSearch"
+# Finds and list all literal matches of "performSearch" in your codebase
 ./src/commands/search.ts:32:40:      const searchResults = await this.performSearch(pattern, folder, rgPath)
 ./src/commands/search.ts:53:17:  private async performSearch(
 ```
@@ -32,6 +33,7 @@ $ npx search-pack "performSearch"
 
 ```bash
 $ npx search-pack "performSearch" --copy
+# Finds all matches of "performSearch" and copies to clipboard the containing files for AI analysis
 ./src/commands/search.ts:32:40:      const searchResults = await this.performSearch(pattern, folder, rgPath)
 ./src/commands/search.ts:53:17:  private async performSearch(
 
