@@ -1,13 +1,23 @@
-# search-pack
+# **search-pack**
 
 Fast code search with [ripgrep](https://github.com/microsoft/vscode-ripgrep) + optional packaging for AI analysis with [repomix](https://github.com/yamadashy/repomix)
 
-## What it does
+## **What it does**
 
 - **Find code fast** - Literal string search powered by [vscode-ripgrep](https://github.com/microsoft/vscode-ripgrep)
 - **Package for AI** - Uses [repomix](https://github.com/yamadashy/repomix) to pack matching files to clipboard for use with any AI provider (ChatGPT, Claude, Gemini, etc.)
 
-## Quick Start
+## **Use without installing (recommended)**
+
+```bash
+npx search-pack <pattern> [options]
+
+# Examples:
+npx search-pack "your pattern"
+npx search-pack "your pattern" --copy
+```
+
+## **Example**
 
 **Basic search:**
 
@@ -46,24 +56,12 @@ Your repository has been successfully packed.
 ✔ Files packed and copied to clipboard!
 ```
 
-## Installation
-
-### Use without installing (recommended)
-
-```bash
-npx search-pack <pattern> [options]
-
-# Examples:
-npx search-pack "your pattern"
-npx search-pack "your pattern" --copy
-```
-
-### Options
+## **Options**
 
 - `-c, --copy` - Pack matching files with repomix and copy to clipboard
 - `-f, --folder <dir>` - Directory to search (default: current)
 
-### Global installation (optional)
+## **Global installation (optional)**
 
 ```bash
 npm install -g search-pack
@@ -73,30 +71,30 @@ search-pack "your pattern"
 sp "your pattern"  # Short alias
 ```
 
-## How it works
+## **How it works**
 
 1. **Search** - Uses [vscode-ripgrep](https://github.com/microsoft/vscode-ripgrep) for fast literal string matching
 2. **Display** - Shows colored results with file:line:column format
 3. **Pack** (with --copy) - Uses [repomix](https://github.com/yamadashy/repomix) to package matching files and copy to clipboard
 
-## Features
+## **Features**
 
 - **Literal string search** - What you type is what you search
 - **Fast** - Powered by ripgrep, one of the fastest search tools available
 - **AI-independent** - Use with any AI provider or tool, not locked to specific IDEs or services
 - **Cross-platform** - Works on macOS, Linux, and Windows
 
-## Why search-pack?
+## **Why search-pack?**
 
 Modern AI tools are powerful but fragmented across different providers and IDEs. Whether you use ChatGPT, Claude, Gemini, Cursor, or any other AI service, you need a consistent way to find and share code context.
 
 `search-pack` gives you that independence - find relevant code fast, package it properly with repomix, and use it with whatever AI tool you prefer. No vendor lock-in, no IDE constraints, just your code ready for any AI conversation.
 
-## License
+## **License**
 
 MIT © Francisco Depascuali
 
-## Dependencies
+## **Dependencies**
 
 - [vscode-ripgrep](https://github.com/microsoft/vscode-ripgrep) - Ripgrep bundled for Node.js
 - [repomix](https://github.com/yamadashy/repomix) - File packaging for AI context
