@@ -1,6 +1,6 @@
 {
   "name": "search-pack",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Search code patterns with ripgrep and optionally package matching files with repomix for AI analysis",
   "type": "module",
   "main": "dist/cli.js",
