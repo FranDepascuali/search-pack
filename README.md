@@ -7,30 +7,43 @@ Fast code search with [ripgrep](https://github.com/microsoft/vscode-ripgrep) + o
 - **Find code fast** - Literal string search powered by [vscode-ripgrep](https://github.com/microsoft/vscode-ripgrep)
 - **Package for AI** - Uses [repomix](https://github.com/yamadashy/repomix) to pack matching files to clipboard for use with any AI provider (ChatGPT, Claude, Gemini, etc.)
 
-```bash
-# Search for code
-npx search-pack "useState"
-
-# Search + pack with repomix for AI
-npx search-pack "error handling" --copy
-```
-
 ## Quick Start
 
+**Basic search:**
+
 ```bash
-# Basic search
-npx search-pack "console.log"
+$ npx search-pack "performSearch"
+./src/commands/search.ts:32:40:      const searchResults = await this.performSearch(pattern, folder, rgPath)
+./src/commands/search.ts:53:17:  private async performSearch(
+```
 
-# Search in specific folder
-npx search-pack "API_KEY" -f src
+**Search + pack for AI:**
 
-# Search + pack for AI context
-npx search-pack "useState" --copy
-npx search-pack "import React" --copy
+```bash
+$ npx search-pack "performSearch" --copy
+./src/commands/search.ts:32:40:      const searchResults = await this.performSearch(pattern, folder, rgPath)
+./src/commands/search.ts:53:17:  private async performSearch(
 
-# Complex literal strings
-npx search-pack "const [data, setData] = useState" --copy
-npx search-pack 'onClick={() => {' --copy
+⠸ Running repomix...
+✔ Packing completed successfully!
+
+📈 Top 5 Files by Token Count:
+──────────────────────────────
+1.  src/commands/search.ts (1,056 tokens, 4,401 chars, 73.9%)
+
+🔎 Security Check:
+──────────────────
+✔ No suspicious files detected.
+
+📊 Pack Summary:
+────────────────
+  Total Files: 1 files
+ Total Tokens: 1,429 tokens
+  Total Chars: 6,171 chars
+
+🎉 All Done!
+Your repository has been successfully packed.
+✔ Files packed and copied to clipboard!
 ```
 
 ## Installation
@@ -38,8 +51,17 @@ npx search-pack 'onClick={() => {' --copy
 ### Use without installing (recommended)
 
 ```bash
+npx search-pack <pattern> [options]
+
+# Examples:
 npx search-pack "your pattern"
+npx search-pack "your pattern" --copy
 ```
+
+### Options
+
+- `-c, --copy` - Pack matching files with repomix and copy to clipboard
+- `-f, --folder <dir>` - Directory to search (default: current)
 
 ### Global installation (optional)
 
@@ -51,100 +73,29 @@ search-pack "your pattern"
 sp "your pattern"  # Short alias
 ```
 
-## Usage
-
-```bash
-npx search-pack <pattern> [options]
-```
-
 ### Options
 
 - `-c, --copy` - Pack matching files with repomix and copy to clipboard
 - `-f, --folder <dir>` - Directory to search (default: current)
 
-### Examples
-
-```bash
-# Find all TODOs
-npx search-pack "TODO"
-
-# Find error handling
-npx search-pack "catch (error)" -f src
-
-# Get all test files for AI review
-npx search-pack "describe(" -f tests --copy
-
-# Find API endpoints
-npx search-pack "app.get(" --copy
-
-# Find imports from specific path
-npx search-pack "from '@/components" --copy
-
-# Find React hooks usage
-npx search-pack "useEffect(() =>" --copy
-```
-
 ## How it works
 
 1. **Search** - Uses [vscode-ripgrep](https://github.com/microsoft/vscode-ripgrep) for fast literal string matching
-2. **Display** - Shows colored results with file:line:column
+2. **Display** - Shows colored results with file:line:column format
 3. **Pack** (with --copy) - Uses [repomix](https://github.com/yamadashy/repomix) to package matching files and copy to clipboard
-
-## Common Use Cases
-
-### For AI/LLM Context
-
-```bash
-# Find all error handling code
-npx search-pack "try {" --copy
-
-# Get all component definitions
-npx search-pack "export const" -f components --copy
-
-# Find all database queries
-npx search-pack "SELECT" --copy
-```
-
-### For Development
-
-```bash
-# Find hardcoded values
-npx search-pack "localhost:3000"
-
-# Find specific function usage
-npx search-pack "handleSubmit("
-
-# Find console.logs to clean up
-npx search-pack "console.log"
-```
 
 ## Features
 
 - **Literal string search** - What you type is what you search
-- **No dependencies** - Ripgrep bundled via [vscode-ripgrep](https://github.com/microsoft/vscode-ripgrep), repomix auto-installed when needed
-- **Fast** - Powered by ripgrep, one of the fastest search tools
+- **Fast** - Powered by ripgrep, one of the fastest search tools available
 - **AI-independent** - Use with any AI provider or tool, not locked to specific IDEs or services
 - **Cross-platform** - Works on macOS, Linux, and Windows
 
-## Troubleshooting
-
-### No results found
-
-- Pattern is searched literally (exact match)
-- Check if you're in the right directory
-- Try with `-f .` to explicitly search current directory
-
-### Files not copied to clipboard
-
-- Repomix needs npm/npx (install Node.js if missing)
-- On Linux, clipboard access may need additional setup
-- Large files timeout after 30 seconds
-
-## Why?
+## Why search-pack?
 
 Modern AI tools are powerful but fragmented across different providers and IDEs. Whether you use ChatGPT, Claude, Gemini, Cursor, or any other AI service, you need a consistent way to find and share code context.
 
-`search-pack` gives you that independence - find code fast, package it with repomix, and use it with whatever AI tool you prefer. No vendor lock-in, no IDE constraints, just your code ready for any AI.
+`search-pack` gives you that independence - find relevant code fast, package it properly with repomix, and use it with whatever AI tool you prefer. No vendor lock-in, no IDE constraints, just your code ready for any AI conversation.
 
 ## License
 
