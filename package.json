@@ -6,7 +6,7 @@
   "main": "dist/cli.js",
   "bin": {
     "search-pack": "dist/cli.js",
-    "cs": "dist/cli.js"
+    "sp": "dist/cli.js"
   },
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx --config .eslintrc.cjs",
