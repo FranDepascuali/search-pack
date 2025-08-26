@@ -1,12 +1,12 @@
 {
-  "name": "code-tracker-cli",
+  "name": "code-search",
   "version": "1.0.0",
-  "description": "Find and track function definitions and usage across your codebase, then package with repomix for AI analysis",
+  "description": "Search code patterns with ripgrep and optionally package matching files with repomix for AI analysis",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "code-tracker": "dist/cli.js",
-    "ct": "dist/cli.js"
+    "code-search": "dist/cli.js",
+    "cs": "dist/cli.js"
   },
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx --config .eslintrc.cjs",
@@ -17,12 +17,13 @@
   },
   "keywords": [
     "code-search",
-    "ast",
+    "ripgrep",
+    "search",
     "repomix",
     "ai",
     "analysis",
-    "typescript",
-    "javascript"
+    "cli",
+    "developer-tools"
   ],
   "author": "Francisco Depascuali",
   "license": "MIT",
@@ -52,10 +53,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/code-tracker-cli.git"
+    "url": "https://github.com/yourusername/code-search.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/code-tracker-cli/issues"
+    "url": "https://github.com/yourusername/code-search/issues"
   },
-  "homepage": "https://github.com/yourusername/code-tracker-cli#readme"
+  "homepage": "https://github.com/yourusername/code-search#readme"
 }
