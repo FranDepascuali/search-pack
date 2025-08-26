@@ -1,30 +1,63 @@
-# Sample TypeScript Project
+# code-search
 
-This is a sample project as part of the DEPA TypeScript Starter Template. It includes a TypeScript setup with ESLint, Prettier, and Vitest.
+```bash
+# Search for code
+npx code-search "useState"
+npx code-search "handleSubmit" -f src
 
-## Getting Started
+# Search + copy to clipboard for AI
+npx code-search "error handling" --copy
+npx code-search "import React" -c
 
-### Prerequisites
-
-- asdf
-
-### Scripts
-
-- Start the development server:
-
-```sh
-npm run dev
+# Install globally (optional)
+npm install -g code-search
+code-search "pattern" -c
 ```
 
-- Run tests
+## What it does
 
-```sh
-npm run test
+Fast code search with ripgrep + optional packaging for AI analysis.
+
+- `code-search "pattern"` - Find code
+- Add `--copy` - Package matching files to clipboard
+- Add `--folder src` - Search specific directory
+
+## Install requirements
+
+```bash
+# macOS
+brew install ripgrep
+
+# Ubuntu
+apt install ripgrep
 ```
 
-Structure
+## Commands
 
-- src: The source files for the project.
-- dist: The compiled output (after running the build).
-- tsconfig.json: TypeScript configuration.
-- package.json: Project metadata and dependencies.
+```bash
+code-search <pattern> [--folder dir] [--copy]
+```
+
+**Options:**
+
+- `--copy, -c` - Pack files and copy to clipboard
+- `--folder, -f` - Directory to search (default: current)
+
+## Examples
+
+```bash
+# Basic search
+code-search "console.log"
+
+# Search specific folder
+code-search "API_KEY" -f src
+
+# Search + pack for AI
+code-search "useState" -c
+code-search "import { useState }" -f components -c
+
+# Complex literal strings work
+code-search "const [data, setData] = useState" -c
+```
+
+That's it. Literal string search, no regex headaches.
