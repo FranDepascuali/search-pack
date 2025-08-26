@@ -73,11 +73,6 @@ search-pack "your pattern"
 sp "your pattern"  # Short alias
 ```
 
-### Options
-
-- `-c, --copy` - Pack matching files with repomix and copy to clipboard
-- `-f, --folder <dir>` - Directory to search (default: current)
-
 ## How it works
 
 1. **Search** - Uses [vscode-ripgrep](https://github.com/microsoft/vscode-ripgrep) for fast literal string matching
