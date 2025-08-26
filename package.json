@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "description": "Search code patterns with ripgrep and optionally package matching files with repomix for AI analysis",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/cli.js",
   "bin": {
     "code-search": "dist/cli.js",
     "cs": "dist/cli.js"
   },
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx --config .eslintrc.cjs",
-    "build": "npm run lint && tsc --outDir dist",
+    "build": "npm run lint && tsc --outDir dist && chmod +x dist/cli.js",
+    "postbuild": "echo '#!/usr/bin/env node' | cat - dist/cli.js > temp && mv temp dist/cli.js",
     "dev": "tsx src/cli.ts",
     "test": "npm run build && vitest --run",
     "prepublishOnly": "npm run build"
@@ -23,7 +24,9 @@
     "ai",
     "analysis",
     "cli",
-    "developer-tools"
+    "developer-tools",
+    "grep",
+    "code-analysis"
   ],
   "author": "Francisco Depascuali",
   "license": "MIT",
@@ -53,10 +56,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/code-search.git"
+    "url": "git+https://github.com/FranDepascuali/code-search.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/code-search/issues"
+    "url": "https://github.com/FranDepascuali/code-search/issues"
   },
-  "homepage": "https://github.com/yourusername/code-search#readme"
+  "homepage": "https://github.com/FranDepascuali/code-search#readme",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
 }

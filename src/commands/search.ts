@@ -2,6 +2,8 @@ import { rgPath } from '@vscode/ripgrep'
 import chalk from 'chalk'
 import { execa } from 'execa'
 import fs from 'fs/promises'
+import os from 'node:os'
+import path from 'node:path'
 import ora from 'ora'
 
 export interface SearchOptions {
@@ -100,9 +102,6 @@ export class SearchCommand {
         return
       }
 
-      console.log(chalk.blue('Files found:'))
-      console.log(files)
-
       spinner.text = 'Running repomix...'
 
       // Check if repomix is available
@@ -118,21 +117,28 @@ export class SearchCommand {
       }
 
       try {
+        const tmpFile = path.join(os.tmpdir(), 'repomix-temp.txt')
+
         // Run repomix with the file list
         const repomixResult = await execa(
           'npx',
-          ['repomix', '--stdin', '--copy', '-o', '/tmp/repomix-temp.txt'],
+          ['repomix', '--stdin', '--copy', '-o', tmpFile],
           {
             input: files,
           },
         )
 
-        console.log(chalk.blue('Repomix stdout:'), repomixResult.stdout)
-        console.log(chalk.blue('Repomix stderr:'), repomixResult.stderr)
+        if (repomixResult.stdout) {
+          console.log(chalk.blue('\nRepomix stdout:\n'), repomixResult.stdout)
+        }
+
+        if (repomixResult.stderr) {
+          console.log(chalk.blue('\nRepomix stderr:\n'), repomixResult.stderr)
+        }
 
         // Clean up temp files
         try {
-          await fs.unlink('/tmp/repomix-temp.txt')
+          await fs.unlink(tmpFile)
         } catch {
           // Ignore cleanup errors
         }
