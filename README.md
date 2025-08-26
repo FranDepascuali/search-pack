@@ -1,4 +1,4 @@
-# code-search
+# search-pack
 
 Fast code search with [ripgrep](https://github.com/microsoft/vscode-ripgrep) + optional packaging for AI analysis with [repomix](https://github.com/yamadashy/repomix)
 
@@ -9,28 +9,28 @@ Fast code search with [ripgrep](https://github.com/microsoft/vscode-ripgrep) + o
 
 ```bash
 # Search for code
-npx code-search "useState"
+npx search-pack "useState"
 
 # Search + pack with repomix for AI
-npx code-search "error handling" --copy
+npx search-pack "error handling" --copy
 ```
 
 ## Quick Start
 
 ```bash
 # Basic search
-npx code-search "console.log"
+npx search-pack "console.log"
 
 # Search in specific folder
-npx code-search "API_KEY" -f src
+npx search-pack "API_KEY" -f src
 
 # Search + pack for AI context
-npx code-search "useState" --copy
-npx code-search "import React" -c
+npx search-pack "useState" --copy
+npx search-pack "import React" --copy
 
 # Complex literal strings
-npx code-search "const [data, setData] = useState" -c
-npx code-search 'onClick={() => {' --copy
+npx search-pack "const [data, setData] = useState" --copy
+npx search-pack 'onClick={() => {' --copy
 ```
 
 ## Installation
@@ -38,23 +38,23 @@ npx code-search 'onClick={() => {' --copy
 ### Use without installing (recommended)
 
 ```bash
-npx code-search "your pattern"
+npx search-pack "your pattern"
 ```
 
 ### Global installation (optional)
 
 ```bash
-npm install -g code-search
+npm install -g search-pack
 
 # Now use directly
-code-search "your pattern"
-cs "your pattern"  # Short alias
+search-pack "your pattern"
+sp "your pattern"  # Short alias
 ```
 
 ## Usage
 
 ```bash
-npx code-search <pattern> [options]
+npx search-pack <pattern> [options]
 ```
 
 ### Options
@@ -66,22 +66,22 @@ npx code-search <pattern> [options]
 
 ```bash
 # Find all TODOs
-npx code-search "TODO"
+npx search-pack "TODO"
 
 # Find error handling
-npx code-search "catch (error)" -f src
+npx search-pack "catch (error)" -f src
 
 # Get all test files for AI review
-npx code-search "describe(" -f tests --copy
+npx search-pack "describe(" -f tests --copy
 
 # Find API endpoints
-npx code-search "app.get(" --copy
+npx search-pack "app.get(" --copy
 
 # Find imports from specific path
-npx code-search "from '@/components" -c
+npx search-pack "from '@/components" --copy
 
 # Find React hooks usage
-npx code-search "useEffect(() =>" --copy
+npx search-pack "useEffect(() =>" --copy
 ```
 
 ## How it works
@@ -96,26 +96,26 @@ npx code-search "useEffect(() =>" --copy
 
 ```bash
 # Find all error handling code
-npx code-search "try {" --copy
+npx search-pack "try {" --copy
 
 # Get all component definitions
-npx code-search "export const" -f components --copy
+npx search-pack "export const" -f components --copy
 
 # Find all database queries
-npx code-search "SELECT" --copy
+npx search-pack "SELECT" --copy
 ```
 
 ### For Development
 
 ```bash
 # Find hardcoded values
-npx code-search "localhost:3000"
+npx search-pack "localhost:3000"
 
 # Find specific function usage
-npx code-search "handleSubmit("
+npx search-pack "handleSubmit("
 
 # Find console.logs to clean up
-npx code-search "console.log"
+npx search-pack "console.log"
 ```
 
 ## Features
@@ -144,7 +144,7 @@ npx code-search "console.log"
 
 Modern AI tools are powerful but fragmented across different providers and IDEs. Whether you use ChatGPT, Claude, Gemini, Cursor, or any other AI service, you need a consistent way to find and share code context.
 
-`code-search` gives you that independence - find code fast, package it with repomix, and use it with whatever AI tool you prefer. No vendor lock-in, no IDE constraints, just your code ready for any AI.
+`search-pack` gives you that independence - find code fast, package it with repomix, and use it with whatever AI tool you prefer. No vendor lock-in, no IDE constraints, just your code ready for any AI.
 
 ## License
 

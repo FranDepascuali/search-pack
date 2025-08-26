@@ -1,11 +1,11 @@
 {
-  "name": "code-search",
+  "name": "search-pack",
   "version": "1.0.0",
   "description": "Search code patterns with ripgrep and optionally package matching files with repomix for AI analysis",
   "type": "module",
   "main": "dist/cli.js",
   "bin": {
-    "code-search": "dist/cli.js",
+    "search-pack": "dist/cli.js",
     "cs": "dist/cli.js"
   },
   "scripts": {
@@ -17,7 +17,7 @@
     "prepublishOnly": "npm run build"
   },
   "keywords": [
-    "code-search",
+    "search-pack",
     "ripgrep",
     "search",
     "repomix",
@@ -56,12 +56,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FranDepascuali/code-search.git"
+    "url": "git+https://github.com/FranDepascuali/search-pack.git"
   },
   "bugs": {
-    "url": "https://github.com/FranDepascuali/code-search/issues"
+    "url": "https://github.com/FranDepascuali/search-pack/issues"
   },
-  "homepage": "https://github.com/FranDepascuali/code-search#readme",
+  "homepage": "https://github.com/FranDepascuali/search-pack#readme",
   "files": [
     "dist",
     "README.md",

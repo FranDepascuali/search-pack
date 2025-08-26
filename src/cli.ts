@@ -6,7 +6,7 @@ import { SearchCommand } from './commands/search.js'
 const program = new Command()
 
 program
-  .name('code-search')
+  .name('search-pack')
   .description(
     'Search code patterns with ripgrep and optionally package matching files with repomix',
   )
