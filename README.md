@@ -13,14 +13,14 @@ Fast code search with [ripgrep](https://github.com/microsoft/vscode-ripgrep) + o
 npx search-pack <pattern> [options]
 
 # Examples:
-Search for every file that contains pattern:
+## Search for any string in your codebase
 npx search-pack "pattern" 
 
-Search and copy every file that contains pattern:
+## Search and copy files that contain pattern
 npx search-pack "pattern" --copy
 
-Search and copy every file in a specific folder that contains pattern 
-npx search-pack "your pattern" -f ./packages/api --copy
+## Search and copy every file in a specific folder that contains pattern
+npx search-pack "pattern" -f ./packages/api --copy
 ```
 
 ## **Example**
@@ -29,7 +29,7 @@ npx search-pack "your pattern" -f ./packages/api --copy
 
 ```bash
 $ npx search-pack "performSearch"
-# Finds and list all literal matches of "performSearch" in your codebase
+# Find and list all literal matches of "performSearch" in your codebase
 ./src/commands/search.ts:32:40:      const searchResults = await this.performSearch(pattern, folder, rgPath)
 ./src/commands/search.ts:53:17:  private async performSearch(
 ```
@@ -38,7 +38,7 @@ $ npx search-pack "performSearch"
 
 ```bash
 $ npx search-pack "performSearch" --copy
-# Finds all matches of "performSearch" and copies to clipboard the containing files for AI analysis
+# Find all matches of "performSearch" and copies to clipboard the containing files for AI analysis
 ./src/commands/search.ts:32:40:      const searchResults = await this.performSearch(pattern, folder, rgPath)
 ./src/commands/search.ts:53:17:  private async performSearch(
 
