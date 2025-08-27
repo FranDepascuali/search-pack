@@ -13,8 +13,13 @@ Fast code search with [ripgrep](https://github.com/microsoft/vscode-ripgrep) + o
 npx search-pack <pattern> [options]
 
 # Examples:
-npx search-pack "your pattern"
-npx search-pack "your pattern" --copy
+Search for every file that contains pattern:
+npx search-pack "pattern" 
+
+Search and copy every file that contains pattern:
+npx search-pack "pattern" --copy
+
+Search and copy every file in a specific folder that contains pattern 
 npx search-pack "your pattern" -f ./packages/api --copy
 ```
 
